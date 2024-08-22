@@ -41,13 +41,20 @@ body{
 #Hint{
     position: absolute;
     height: 200px;
-    width: 200px;
+    width: 400px;
     bottom: 20px;
     right: 20px;
     border-radius: 5px;
     padding: 10px ;
     color: white;
     font-size: larger;
-    font-family: "Jersey 10", sans-serif;
+    font-family: sans-serif;
     background-color: rgba(0, 167, 167, 0.692);
+}
+
+#command-input{
+    display: inline-block;
+    border: none;
+    background-color: aqua;
+    outline: none;
 }
