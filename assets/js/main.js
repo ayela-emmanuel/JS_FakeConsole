@@ -1,6 +1,7 @@
 
 var args = [];
-
+var InGuessingGame = false;
+var RandNum;
 var commands = {
     "Version": ()=>{
         Log("The Current Version is 0.0.1")
@@ -10,6 +11,35 @@ var commands = {
         
         for (let index = 0; index < parseInt(args[0]); index++) {
             Log("Itration - "+index)
+        }
+    },
+
+    "Do-While": ()=>{
+        var limit = args[0]
+        var x = -1
+        do {
+            Log("Do While Itration - "+x)
+            x++
+        } while (x < limit);
+    },
+    "Number-Guy":()=>{
+        if(!args[0] || !args[1]){
+            LogError("Required Parameters not Set")
+            LogHint("Write 2 Numbers like <br> Number-Guy 0 20")
+            return;
+        }
+        RandNum = getRandomInt(args[0],args[1]); // A number between args[0] args [1]
+        InGuessingGame = true;
+        LogHint(`<h3>Hello Welcome</h3><br>NumberGuy: Please Guess a number Between ${args[0]} and ${args[1]}
+            <br><b>Example:</b><br>
+            Guess 5` )
+        
+    },
+    "Guess":()=>{
+        if(args[0] != RandNum){
+            LogError("Wrong Number");
+        }else{
+            Log("<h4 style='color:green'>You Win</h4>")
         }
     }
     
@@ -71,4 +101,10 @@ function LogHint(data){
             ${data}
             </span>
         `  
+}
+
+function getRandomInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
 }
